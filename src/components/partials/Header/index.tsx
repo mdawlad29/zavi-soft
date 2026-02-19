@@ -13,7 +13,7 @@ const Header = () => {
   const [mobileOpen, setMobileOpen] = useState(false);
 
   return (
-    <header className="sticky top-0 z-50 mx-4 my-8 rounded-3xl bg-white shadow md:mx-[60px]">
+    <header className="sticky top-0 z-50 mx-4 mt-8 rounded-3xl bg-white shadow md:mx-[60px]">
       <div className="flex items-center justify-between p-4 md:p-8">
         {/* Mobile Menu Icon */}
         <IoMdMenu
