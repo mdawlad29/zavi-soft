@@ -20,6 +20,7 @@ const ProductSection = () => {
               isNew
               price="$120"
               title="Product title"
+              url={`/products/${idx}`}
               btnText={`view product`}
               image="/images/product-demo-img.png"
             />

@@ -1,7 +1,9 @@
 import { Button, Rate, Typography } from "antd";
 import Image from "next/image";
+import { useRouter } from "next/navigation";
 
 interface CardDesignProps {
+  url: string;
   image: string;
   title: string;
   price: string;
@@ -11,6 +13,7 @@ interface CardDesignProps {
 }
 
 export const ProductCard = ({
+  url,
   title,
   btnText,
   isNew,
@@ -18,6 +21,8 @@ export const ProductCard = ({
   image,
   isOffer,
 }: CardDesignProps) => {
+  const router = useRouter();
+
   return (
     <div className="space-y-4">
       <div className="rounded-[28px] bg-white p-2">
@@ -50,7 +55,10 @@ export const ProductCard = ({
         {title}
       </Typography.Text>
 
-      <Button className="h-12 !w-full !bg-secondary px-[82px] uppercase !text-neutral">
+      <Button
+        onClick={() => router.push(`${url}`)}
+        className="h-12 !w-full !bg-secondary px-[82px] uppercase !text-neutral"
+      >
         {btnText} - <span className="text-[#FFA52F]">{price}</span>
       </Button>
     </div>
