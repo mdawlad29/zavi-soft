@@ -8,27 +8,23 @@ export default {
   ],
   theme: {
     container: {
-      padding: {
-        DEFAULT: "1rem",
-        xl: "1.5rem",
-      },
+      
     },
     extend: {
       backgroundColor: {
-        primary: "#09a4ff",
-        secondary: "#20252F",
-        "secondary-50": "#fafafa",
-        neutral: "#fff",
+        primary: "#4A69E2",
+        secondary: "#232321",
+        neutral: "#FAFAFA",
       },
       colors: {
-        primary: "#09a4ff",
-        secondary: "#20252F",
-        neutral: "#fff",
+         primary: "#4A69E2",
+        secondary: "#232321",
+        neutral: "#FAFAFA",
       },
       borderColor: {
-        primary: "#09a4ff",
-        secondary: "#20252F",
-        neutral: "#fff",
+        primary: "#4A69E2",
+        secondary: "#232321",
+        neutral: "#FAFAFA",
       },
       screens: {
         xs: "475px",
