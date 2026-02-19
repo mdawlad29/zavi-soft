@@ -28,4 +28,5 @@ export const productService = createApi({
   }),
 });
 
-export const { useGetAllProductsQuery } = productService;
+export const { useGetAllProductsQuery, useGetSingleProductQuery } =
+  productService;

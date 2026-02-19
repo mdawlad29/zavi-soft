@@ -9,14 +9,7 @@ import type { Swiper as SwiperType } from "swiper";
 import "swiper/css";
 import "swiper/css/pagination";
 
-const images = [
-  "/images/fallback-img.png",
-  "/images/product-demo-img.png",
-  "/images/fallback-img.png",
-  "/images/product-demo-img.png",
-];
-
-export const ProductPhotoGallery = () => {
+export const ProductPhotoGallery = ({ data }: any) => {
   const [activeIndex, setActiveIndex] = useState(0);
   const swiperRef = useRef<SwiperType | null>(null);
 
@@ -31,7 +24,7 @@ export const ProductPhotoGallery = () => {
         onSlideChange={(swiper) => setActiveIndex(swiper.activeIndex)}
         className="w-[340px] rounded-3xl bg-[#F1F1F1] md:w-[640px]"
       >
-        {images.map((img, index) => (
+        {data?.images?.map((img: any, index: number) => (
           <SwiperSlide key={index}>
             <div className="flex items-center justify-center p-6">
               <Image
@@ -48,7 +41,7 @@ export const ProductPhotoGallery = () => {
 
       {/* THUMBNAILS */}
       <div className="mt-6 flex items-center gap-2">
-        {images.map((img, index) => (
+        {data?.images?.map((img: any, index: number) => (
           <button
             key={index}
             onClick={() => {

@@ -19,6 +19,7 @@ export const productSlice = createSlice({
     clearProduct: () => initialState,
   },
   extraReducers: (builder) => {
+    // get all products
     builder.addMatcher(
       productService.endpoints.getAllProducts.matchPending,
       (state, action) => {
@@ -39,6 +40,30 @@ export const productSlice = createSlice({
       (state, action) => {
         state.isLoading = false;
         toast.warning(action.error?.message || "Failed to load products");
+      }
+    );
+
+    // get single product
+    builder.addMatcher(
+      productService.endpoints.getSingleProduct.matchPending,
+      (state, action) => {
+        state.isLoading = true;
+      }
+    );
+
+    builder.addMatcher(
+      productService.endpoints.getSingleProduct.matchFulfilled,
+      (state, action) => {
+        state.isLoading = false;
+        state.productItems = action.payload;
+      }
+    );
+
+    builder.addMatcher(
+      productService.endpoints.getSingleProduct.matchRejected,
+      (state, action) => {
+        state.isLoading = false;
+        toast.warning(action.error?.message || "Failed to load product");
       }
     );
   },

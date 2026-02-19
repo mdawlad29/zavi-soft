@@ -5,13 +5,33 @@ import Image from "next/image";
 import { useState } from "react";
 import { MdFavoriteBorder } from "react-icons/md";
 import { ProductPhotoGallery } from "./MobileViewProductDetailsPhotoGallery";
+import { useGetSingleProductQuery } from "@/services/product.service";
+import { useParams } from "next/navigation";
+import { Loader } from "../shared/Loader";
 
 const sizes = [38, 39, 40, 41, 42, 43, 44, 45, 46, 47];
 const colors = ["#253043", "#707E6E"];
 
+interface ProductImage {
+  img: string;
+}
+
 const ProductDetails = () => {
-  const [selectedSize, setSelectedSize] = useState<number | null>(38);
+  const params = useParams();
+  const slug = params.slug;
+  const productId = Array.isArray(slug) ? slug[slug.length - 1] : slug;
+
+  const { data, error, isLoading } = useGetSingleProductQuery(
+    productId as string
+  );
+
   const [selectedColor, setSelectedColor] = useState(colors[0]);
+  const [selectedSize, setSelectedSize] = useState<number | null>(38);
+
+  console.log("data", data);
+
+  if (isLoading) return <Loader />;
+  if (error) return <div className="text-red-500">Failed to load product</div>;
 
   return (
     <section className="mx-4 mb-[128px] mt-8 md:mx-[60px]">
@@ -19,15 +39,10 @@ const ProductDetails = () => {
         {/* LEFT IMAGE GRID */}
         <div className="hidden lg:col-span-2 lg:block">
           <div className="grid grid-cols-2 gap-4 overflow-hidden rounded-[48px]">
-            {[
-              "/images/fallback-img.png",
-              "/images/fallback-img.png",
-              "/images/fallback-img.png",
-              "/images/fallback-img.png",
-            ].map((img, index) => (
+            {data?.images?.map((img: ProductImage, index: number) => (
               <div key={index} className="bg-neutral">
                 <Image
-                  src={img}
+                  src={`${img}`}
                   alt="product"
                   width={429}
                   height={510}
@@ -38,7 +53,7 @@ const ProductDetails = () => {
           </div>
         </div>
         <div className="block lg:hidden">
-          <ProductPhotoGallery />
+          <ProductPhotoGallery data={data} />
         </div>
 
         {/* RIGHT SIDE INFO */}
@@ -51,11 +66,11 @@ const ProductDetails = () => {
             level={2}
             className="!m-0 !mb-4 !text-[32px] !leading-[100%]"
           >
-            ADIDAS 4DFWD X PARLEY RUNNING SHOES
+            {data?.title}
           </Typography.Title>
 
           <Typography.Text className="mb-8 block text-[24px] font-semibold leading-[100%] text-primary">
-            $125.00
+            ${data?.price}
           </Typography.Text>
 
           {/* COLOR SELECT */}
