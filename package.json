@@ -13,6 +13,8 @@
     "format:check": "prettier --check ."
   },
   "dependencies": {
+    "@reduxjs/toolkit": "^2.11.2",
+    "@types/react-redux": "^7.1.34",
     "antd": "^5.24.3",
     "env-cmd": "^10.1.0",
     "moment": "^2.30.1",
@@ -21,7 +23,10 @@
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
     "react-icons": "^5.4.0",
+    "react-redux": "^9.2.0",
     "react-toastify": "^11.0.5",
+    "redux": "^5.0.1",
+    "redux-persist": "^6.0.0",
     "sass": "^1.83.1",
     "swiper": "^11.2.5"
   },

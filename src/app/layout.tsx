@@ -3,6 +3,7 @@ import { Inter } from "next/font/google";
 import Head from "next/head";
 import "../scss/main.scss";
 import PageRender from "./PageRender";
+import { Providers } from "./redux/provider";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -37,7 +38,9 @@ export default function RootLayout({
         className={`scrollbar overflow-x-hidden antialiased ${inter.className}`}
         suppressHydrationWarning={true}
       >
-        <PageRender>{children}</PageRender>
+        <Providers>
+          <PageRender>{children}</PageRender>
+        </Providers>
       </body>
     </html>
   );

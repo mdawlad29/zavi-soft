@@ -45,7 +45,7 @@ export const ProductCard = ({
               alt="hero-img"
               width={302}
               height={334}
-              className="object-contain"
+              className="h-[318px]"
             />
           </div>
         </div>
