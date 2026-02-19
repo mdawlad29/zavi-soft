@@ -9,7 +9,7 @@ const HeroSection = () => {
       {/* Hero Title */}
       <Typography.Title
         level={1}
-        className="!m-0 !mb-6 inline-block text-[57px] !font-bold uppercase !text-secondary md:!text-[108px] lg:!text-[193px]"
+        className="!m-0 !mb-6 inline-block text-[57px] !font-bold uppercase !leading-[100%] !text-secondary md:!text-[108px] lg:!text-[193px]"
       >
         do it <span className="!text-primary">right</span>
       </Typography.Title>
@@ -31,10 +31,10 @@ const HeroSection = () => {
         <div className="absolute bottom-0 w-full px-4 pb-12 md:px-12">
           <div className="flex items-center justify-between">
             <div className="flex flex-col">
-              <Typography.Text className="text-[24px] font-semibold text-neutral md:text-[32px] lg:text-[74px]">
+              <Typography.Text className="mb-2 text-[24px] font-semibold leading-[100%] text-neutral md:text-[32px] lg:text-[74px]">
                 NIKE AIR MAX
               </Typography.Text>
-              <Typography.Text className="mb-4 block text-[14px] text-[#E7E7E3] md:text-[24px]">
+              <Typography.Text className="mb-4 block text-[14px] leading-[100%] text-[#E7E7E3] md:text-[24px]">
                 Nike introducing the new air max for <br /> everyone's comfort{" "}
               </Typography.Text>
 

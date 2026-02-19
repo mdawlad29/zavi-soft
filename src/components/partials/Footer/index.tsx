@@ -12,10 +12,10 @@ const Footer = () => {
         <div className="px-4 pb-[39px] pt-4 md:px-[72px] md:pt-16">
           <Row gutter={[103, 32]} align={"middle"}>
             <Col xs={24} lg={14}>
-              <Typography.Text className="mb-4 block text-[32px] font-semibold uppercase text-white md:text-[48px]">
+              <Typography.Text className="mb-4 block text-[32px] font-semibold uppercase leading-[100%] text-white md:text-[48px]">
                 Join our KicksPlus Club & get 15% off
               </Typography.Text>
-              <Typography.Text className="mb-4 block text-[16px] font-semibold text-[#E7E7E3] md:text-[20px]">
+              <Typography.Text className="mb-4 block text-[16px] font-semibold leading-[100%] text-[#E7E7E3] md:text-[20px]">
                 Sign up for free! Join the community.
               </Typography.Text>
 
@@ -53,7 +53,7 @@ const Footer = () => {
             <Col xs={24} sm={24} md={12} lg={9}>
               <FooterTitle title="About Us" />
 
-              <Typography.Text className="block text-base font-semibold text-[#E7E7E3] md:text-lg lg:text-[20px]">
+              <Typography.Text className="block text-base font-semibold leading-[100%] text-[#E7E7E3] md:text-lg lg:text-[20px]">
                 We are the biggest hyperstore in the universe. We got you all
                 cover with our exclusive collections and latest drops.
               </Typography.Text>
@@ -152,7 +152,7 @@ export default Footer;
 
 const FooterTitle = ({ title }: { title: string }) => {
   return (
-    <Typography.Text className="mb-2 text-[24px] font-semibold capitalize text-[#FFA52F] md:text-[36px]">
+    <Typography.Text className="mb-2 text-[24px] font-semibold capitalize leading-[100%] text-[#FFA52F] md:text-[36px]">
       {title}
     </Typography.Text>
   );
