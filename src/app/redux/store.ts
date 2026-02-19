@@ -9,21 +9,23 @@ import {
 } from "redux-persist";
 import persistReducer from "redux-persist/es/persistReducer";
 import storage from "redux-persist/lib/storage";
-import  productReducer  from "./features/product/productSlice";
+import productReducer from "./features/product/productSlice";
 import { productService } from "@/services/product.service";
+import categoriesReducer from "./features/categories/categoriesSlice";
+import { categoriesService } from "@/services/categories.service";
 
 const combinedReducer: any = combineReducers({
   product: productReducer,
+  categories: categoriesReducer,
 
   [productService.reducerPath.toString()]: productService.reducer,
+  [categoriesService.reducerPath.toString()]: categoriesService.reducer,
 });
 
 const persistConfig = {
   key: "root",
   storage,
-  blacklist: [
-    "product",
-  ],
+  blacklist: ["product", "categories"],
 };
 
 const persistedReducer = persistReducer(persistConfig, combinedReducer);
@@ -37,9 +39,7 @@ export const store = configureStore({
       serializableCheck: {
         ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
       },
-    }).concat([
-      productService.middleware,
-    ]),
+    }).concat([productService.middleware, categoriesService.middleware]),
 });
 
 export type RootState = ReturnType<Store["getState"]>;

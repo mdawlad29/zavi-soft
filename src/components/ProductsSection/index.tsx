@@ -34,7 +34,11 @@ const ProductSection = () => {
             <Col xs={12} sm={12} md={12} lg={6} key={idx}>
               <ProductCard
                 price={`$${item.price}`}
-                title={item?.title?.slice(0, 20)}
+                title={
+                  item?.title?.length > 20
+                    ? `${item?.title.slice(0, 20)}...`
+                    : item?.title
+                }
                 url={`/products/${item?.id}`}
                 btnText={`view product`}
                 image={item?.images?.[0]}

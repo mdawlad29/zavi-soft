@@ -6,9 +6,11 @@ import { IoIosArrowForward } from "react-icons/io";
 import { MdArrowBackIos } from "react-icons/md";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { ProductCard } from "../shared/CardDesign";
+import { useGetAllProductsQuery } from "@/services/product.service";
 
 export const RecommendedProduct = () => {
   const swiperRef = useRef<any>(null);
+  const { data, error, isLoading } = useGetAllProductsQuery();
 
   const [isBeginning, setIsBeginning] = useState(true);
   const [isEnd, setIsEnd] = useState(false);
@@ -60,8 +62,8 @@ export const RecommendedProduct = () => {
             slidesPerGroup: 2,
           },
           768: {
-            slidesPerView: 3,
-            slidesPerGroup: 3,
+            slidesPerView: 2,
+            slidesPerGroup: 2,
           },
           1024: {
             slidesPerView: 4,
@@ -69,15 +71,18 @@ export const RecommendedProduct = () => {
           },
         }}
       >
-        {[...Array(10)].map((_, idx) => (
+        {data?.map((item: any, idx: number) => (
           <SwiperSlide key={idx}>
             <ProductCard
-              isNew
-              price="$120"
-              title="Product title"
+              price={`$${item.price}`}
+              title={
+                item?.title?.length > 20
+                  ? `${item?.title.slice(0, 20)}...`
+                  : item?.title
+              }
               url={`/products/${idx}`}
               btnText={`view product`}
-              image="/images/product-demo-img.png"
+              image={item?.images?.[0]}
             />
           </SwiperSlide>
         ))}

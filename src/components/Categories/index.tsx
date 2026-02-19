@@ -9,12 +9,25 @@ import { GoArrowUpRight } from "react-icons/go";
 import Image from "next/image";
 
 import "swiper/css";
+import { useGetAllCategoriesQuery } from "@/services/categories.service";
+import { Loader } from "../shared/Loader";
+
+interface CategoriesProps {
+  id: number;
+  name: string;
+  image: string;
+}
 
 const Categories = () => {
   const swiperRef = useRef<any>(null);
+  const { data, error, isLoading } = useGetAllCategoriesQuery();
 
   const [isBeginning, setIsBeginning] = useState(true);
   const [isEnd, setIsEnd] = useState(false);
+
+  if (isLoading) return <Loader />;
+  if (error)
+    return <div className="text-red-500">Failed to load categories</div>;
 
   return (
     <section className="bg-secondary pt-8 md:pt-[90px]">
@@ -71,21 +84,21 @@ const Categories = () => {
             },
           }}
         >
-          {[...Array(10)].map((_, idx) => (
+          {data?.map((category: CategoriesProps, idx: number) => (
             <SwiperSlide key={idx}>
               <div className="flex flex-col items-center">
                 <Image
-                  src="/images/product-demo-img.png"
+                  src={category.image || "/images/fallback-img.png"}
                   alt="category-img"
                   width={302}
                   height={334}
-                  className="object-contain"
+                  className="h-[300px] object-cover"
                 />
               </div>
 
               <div className="mt-6 flex items-center justify-between">
                 <Typography.Text className="block text-[24px] font-semibold leading-[100%] text-secondary lg:text-[36px]">
-                  Lifestyle <br /> Shoes
+                  {category.name}
                 </Typography.Text>
 
                 <button className="flex size-8 items-center justify-center rounded-lg bg-secondary text-neutral md:size-12">

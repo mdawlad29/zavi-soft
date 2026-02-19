@@ -24,9 +24,8 @@ export const ProductCard = ({
   const router = useRouter();
 
   return (
-    <div className="flex h-full flex-col space-y-4 rounded-[28px] p-2">
-      {/* IMAGE + BADGES */}
-      <div className="overflow-hidden rounded-[28px] bg-white p-2">
+    <div className="space-y-4">
+      <div className="rounded-[28px] bg-white p-2">
         <div className="relative overflow-hidden rounded-[24px] bg-[#ECEEF0]">
           {isNew && (
             <div className="absolute left-0 top-0 rounded-br-[24px] bg-primary px-4 py-3 text-[12px] font-semibold text-neutral">
@@ -40,27 +39,25 @@ export const ProductCard = ({
             </div>
           )}
 
-          <div className="flex h-[318px] items-center justify-center">
+          <div className="flex flex-col items-center justify-center">
             <Image
               src={image ?? "/images/fallback-img.png"}
-              alt={title}
+              alt="hero-img"
               width={302}
-              height={318}
-              className="h-[318px] w-full"
+              height={334}
+              className="h-[300px] object-cover"
             />
           </div>
         </div>
       </div>
 
-      {/* TITLE */}
       <Typography.Text className="block text-[24px] font-semibold leading-[100%] text-secondary">
         {title}
       </Typography.Text>
 
-      {/* BUTTON */}
       <Button
         onClick={() => router.push(`${url}`)}
-        className="mt-auto h-12 !w-full !bg-secondary px-[82px] uppercase !text-neutral"
+        className="h-12 !w-full !bg-secondary px-[82px] uppercase !text-neutral"
       >
         {btnText} - <span className="text-[#FFA52F]">{price}</span>
       </Button>
