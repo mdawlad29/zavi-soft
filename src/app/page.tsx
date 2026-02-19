@@ -7,12 +7,16 @@ const HeroSection = dynamic(() => import("@/components/HeroSection"), {
 const ProductSection = dynamic(() => import("@/components/ProductsSection"), {
   loading: () => <Loader />,
 });
+const Categories = dynamic(() => import("@/components/Categories"), {
+  loading: () => <Loader />,
+});
 
 export default function Home() {
   return (
     <>
       <HeroSection />
       <ProductSection />
+      <Categories />
     </>
   );
 }
