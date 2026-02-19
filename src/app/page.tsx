@@ -10,6 +10,9 @@ const ProductSection = dynamic(() => import("@/components/ProductsSection"), {
 const Categories = dynamic(() => import("@/components/Categories"), {
   loading: () => <Loader />,
 });
+const Reviews = dynamic(() => import("@/components/Reviews"), {
+  loading: () => <Loader />,
+});
 
 export default function Home() {
   return (
@@ -17,6 +20,7 @@ export default function Home() {
       <HeroSection />
       <ProductSection />
       <Categories />
+      <Reviews />
     </>
   );
 }

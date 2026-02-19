@@ -17,7 +17,7 @@ export default {
         neutral: "#FAFAFA",
       },
       colors: {
-         primary: "#4A69E2",
+        primary: "#4A69E2",
         secondary: "#232321",
         neutral: "#FAFAFA",
       },
