@@ -12,6 +12,7 @@ import { useAppDispatch, useAppSelector } from "@/app/redux/hook";
 import { RootState } from "@/app/redux/store";
 import { setSelectedItems } from "@/app/redux/features/product/productSlice";
 import { toast } from "react-toastify";
+import ComponentLayout from "@/Layout/ComponentLayout";
 
 const sizes = [38, 39, 40, 41, 42, 43, 44, 45, 46, 47];
 const colors = ["#253043", "#707E6E"];
@@ -78,7 +79,7 @@ const ProductDetails = () => {
   if (error) return <div className="text-red-500">Failed to load product</div>;
 
   return (
-    <section className="mx-4 mb-[128px] mt-8 md:mx-[60px]">
+    <ComponentLayout className="!mb-[128px]">
       <div className="grid gap-4 lg:grid-cols-3">
         {/* LEFT IMAGE GRID */}
         <div className="hidden lg:col-span-2 lg:block">
@@ -215,7 +216,7 @@ const ProductDetails = () => {
           </div>
         </div>
       </div>
-    </section>
+    </ComponentLayout>
   );
 };
 

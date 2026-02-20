@@ -7,6 +7,7 @@ import { MdArrowBackIos } from "react-icons/md";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { ProductCard } from "../shared/CardDesign";
 import { useGetAllProductsQuery } from "@/services/product.service";
+import ComponentLayout from "@/Layout/ComponentLayout";
 
 export const RecommendedProduct = () => {
   const swiperRef = useRef<any>(null);
@@ -16,7 +17,7 @@ export const RecommendedProduct = () => {
   const [isEnd, setIsEnd] = useState(false);
 
   return (
-    <section className="mx-4 mb-[60px] mt-8 md:mx-[60px]">
+    <ComponentLayout className="!mb-[60px]">
       <div className="mb-8 flex items-center justify-between">
         <Typography.Text className="block text-[24px] font-semibold leading-[95%] text-secondary md:text-[48px]">
           You may also like
@@ -87,6 +88,6 @@ export const RecommendedProduct = () => {
           </SwiperSlide>
         ))}
       </Swiper>
-    </section>
+    </ComponentLayout>
   );
 };

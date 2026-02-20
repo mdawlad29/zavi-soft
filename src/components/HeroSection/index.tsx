@@ -1,11 +1,12 @@
 "use client";
+import ComponentLayout from "@/Layout/ComponentLayout";
 import { Button, Typography } from "antd";
 import Image from "next/image";
 import React from "react";
 
 const HeroSection = () => {
   return (
-    <section className="mx-4 mb-[90px] mt-6 md:mx-[60px]">
+    <ComponentLayout className="!mt-6">
       {/* Hero Title */}
       <Typography.Title
         level={1}
@@ -66,7 +67,7 @@ const HeroSection = () => {
           </div>
         </div>
       </div>
-    </section>
+    </ComponentLayout>
   );
 };
 

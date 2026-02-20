@@ -6,6 +6,7 @@ import { useAppSelector, useAppDispatch } from "@/app/redux/hook";
 import { setSelectedItems } from "@/app/redux/features/product/productSlice";
 import { MdFavoriteBorder } from "react-icons/md";
 import { RiDeleteBin2Line } from "react-icons/ri";
+import ComponentLayout from "@/Layout/ComponentLayout";
 
 const OrderSummery = () => {
   const dispatch = useAppDispatch();
@@ -81,7 +82,7 @@ const OrderSummery = () => {
   const total = subtotal + delivery;
 
   return (
-    <section className="mx-4 mb-[128px] mt-8 md:mx-[60px]">
+    <ComponentLayout className="!mb-[128px]">
       <Row gutter={[47, 47]} align={"middle"}>
         {/* LEFT */}
         <Col xs={24} lg={16}>
@@ -258,7 +259,7 @@ const OrderSummery = () => {
           </div>
         </Col>
       </Row>
-    </section>
+    </ComponentLayout>
   );
 };
 

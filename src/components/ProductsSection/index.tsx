@@ -6,6 +6,7 @@ import { ProductCard } from "../shared/CardDesign";
 import { Col, Row } from "antd";
 import { useGetAllProductsQuery } from "@/services/product.service";
 import { Loader } from "../shared/Loader";
+import ComponentLayout from "@/Layout/ComponentLayout";
 
 interface Product {
   id: string | number;
@@ -18,7 +19,7 @@ const ProductSection = () => {
   const { data, error, isLoading } = useGetAllProductsQuery();
 
   return (
-    <section className="mx-4 mb-[128px] md:mx-[60px]">
+    <ComponentLayout className="!mb-[128px] !mt-0">
       <SectionHeader
         title={`Don’t miss out <br class="hidden md:block"/> new drops`}
         btnText="SHOP NEW DROPS"
@@ -47,7 +48,7 @@ const ProductSection = () => {
           ))
         )}
       </Row>
-    </section>
+    </ComponentLayout>
   );
 };
 
