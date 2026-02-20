@@ -19,7 +19,7 @@ const ProductSection = () => {
   const { data, error, isLoading } = useGetAllProductsQuery();
 
   return (
-    <ComponentLayout className="!mb-[128px] !mt-0">
+    <ComponentLayout className="!mb-[128px] !mt-[90px]">
       <SectionHeader
         title={`Don’t miss out <br class="hidden md:block"/> new drops`}
         btnText="SHOP NEW DROPS"
