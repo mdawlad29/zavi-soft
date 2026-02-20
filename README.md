@@ -28,7 +28,7 @@ This project includes product listing, product details page, responsive gallery 
 ## 🛠️ Tech Stack
 
 - **Next.js 14**
-- **React 18**
+- **React**
 - **TypeScript**
 - **Tailwind CSS**
 - **Ant Design**
@@ -42,5 +42,6 @@ This project includes product listing, product details page, responsive gallery 
 ```bash
 git clone https://github.com/mdawlad29/zavi-soft
 cd zavi-soft
-npm install
+yarn add
+yarn dev
 ```
