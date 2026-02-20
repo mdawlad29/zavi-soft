@@ -2,7 +2,7 @@
 
 # 🛍️ E-Commerce Frontend (Next.js)
 
-A modern, fully responsive eCommerce frontend built with **Next.js 15 (App Router)**, **Tailwind CSS**, **Ant Design**, and **Swiper.js**.
+A modern, fully responsive eCommerce frontend built with **Next.js 16 (App Router)**, **Tailwind CSS**, **Ant Design**, and **Swiper.js**.
 
 This project includes product listing, product details page, responsive gallery slider, and recommended products carousel with navigation controls.
 
@@ -10,7 +10,7 @@ This project includes product listing, product details page, responsive gallery 
 
 ## 🚀 Features
 
-- ⚡ Next.js 15 App Router
+- ⚡ Next.js 16 App Router
 - 🎨 Tailwind CSS Styling
 - 🧩 Ant Design Components
 - 🖼️ Responsive Product Image Gallery (Swiper)

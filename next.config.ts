@@ -18,9 +18,6 @@ const nextConfig: NextConfig = {
     formats: ["image/avif", "image/webp"],
     dangerouslyAllowSVG: true,
   },
-  eslint: {
-    ignoreDuringBuilds: true,
-  },
   output: "standalone",
   distDir: ".next",
 };

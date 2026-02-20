@@ -76,7 +76,12 @@ const ProductDetails = () => {
   };
 
   if (isLoading) return <Loader />;
-  if (error) return <div className="text-red-500">Failed to load product</div>;
+  if (error)
+    return (
+      <ComponentLayout className="!text-red-500">
+        Failed to load product
+      </ComponentLayout>
+    );
 
   return (
     <ComponentLayout className="!mb-[128px]">
