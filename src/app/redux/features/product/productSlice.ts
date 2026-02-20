@@ -5,11 +5,13 @@ import { toast } from "react-toastify";
 type ProductState = {
   isLoading: boolean;
   productItems: any[];
+  selectedItems: any[];
 };
 
 const initialState: ProductState = {
   isLoading: false,
   productItems: [],
+  selectedItems: [],
 };
 
 export const productSlice = createSlice({
@@ -17,6 +19,10 @@ export const productSlice = createSlice({
   initialState,
   reducers: {
     clearProduct: () => initialState,
+
+    setSelectedItems: (state, action) => {
+      state.selectedItems = action.payload;
+    },
   },
   extraReducers: (builder) => {
     // get all products
@@ -69,5 +75,5 @@ export const productSlice = createSlice({
   },
 });
 
-export const { clearProduct } = productSlice.actions;
+export const { clearProduct, setSelectedItems } = productSlice.actions;
 export default productSlice.reducer;

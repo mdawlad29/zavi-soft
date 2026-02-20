@@ -8,9 +8,23 @@ import { useState } from "react";
 import Image from "next/image";
 import { MobileDrawer } from "./MobileDrawer";
 import { menuItems } from "@/constants";
+import { useAppSelector } from "@/app/redux/hook";
+import { RootState } from "@/app/redux/store";
+import { useRouter } from "next/navigation";
+import { toast } from "react-toastify";
 
 const Header = () => {
+  const router = useRouter();
   const [mobileOpen, setMobileOpen] = useState(false);
+  const { selectedItems } = useAppSelector((state: RootState) => state.product);
+
+  const handleRedirectToCart = () => {
+    if (!selectedItems.length) {
+      return toast.warn("Cart is empty");
+    }
+
+    router.push("/cart");
+  };
 
   return (
     <header className="sticky top-0 z-50 mx-4 mt-8 rounded-3xl bg-white shadow md:mx-[60px]">
@@ -59,8 +73,11 @@ const Header = () => {
           <IoIosSearch className="hidden cursor-pointer text-[24px] text-secondary md:block" />
           <FaUser className="cursor-pointer text-[24px] text-secondary" />
 
-          <div className="flex h-8 w-8 items-center justify-center rounded-full bg-orange-400 text-[16px] font-semibold text-secondary">
-            0
+          <div
+            onClick={handleRedirectToCart}
+            className="flex h-8 w-8 cursor-pointer items-center justify-center rounded-full bg-orange-400 text-[16px] font-semibold text-secondary"
+          >
+            {selectedItems?.length ?? 0}
           </div>
         </div>
       </div>

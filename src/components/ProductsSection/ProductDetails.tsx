@@ -6,8 +6,12 @@ import { useState } from "react";
 import { MdFavoriteBorder } from "react-icons/md";
 import { ProductPhotoGallery } from "./MobileViewProductDetailsPhotoGallery";
 import { useGetSingleProductQuery } from "@/services/product.service";
-import { useParams } from "next/navigation";
+import { useParams, useRouter } from "next/navigation";
 import { Loader } from "../shared/Loader";
+import { useAppDispatch, useAppSelector } from "@/app/redux/hook";
+import { RootState } from "@/app/redux/store";
+import { setSelectedItems } from "@/app/redux/features/product/productSlice";
+import { toast } from "react-toastify";
 
 const sizes = [38, 39, 40, 41, 42, 43, 44, 45, 46, 47];
 const colors = ["#253043", "#707E6E"];
@@ -17,8 +21,11 @@ interface ProductImage {
 }
 
 const ProductDetails = () => {
+  const router = useRouter();
   const params = useParams();
   const slug = params.slug;
+  const dispatch = useAppDispatch();
+  const { selectedItems } = useAppSelector((state: RootState) => state.product);
   const productId = Array.isArray(slug) ? slug[slug.length - 1] : slug;
 
   const { data, error, isLoading } = useGetSingleProductQuery(
@@ -28,7 +35,44 @@ const ProductDetails = () => {
   const [selectedColor, setSelectedColor] = useState(colors[0]);
   const [selectedSize, setSelectedSize] = useState<number | null>(38);
 
-  console.log("data", data);
+  const handleSelectedItems = () => {
+    if (!data || !selectedSize || !selectedColor) return;
+
+    const item = {
+      ...data,
+      selectedColor,
+      selectedSize,
+      quantity: 1,
+    };
+
+    const currentItems = [...selectedItems];
+
+    const existingIndex = currentItems.findIndex(
+      (i) =>
+        i.id === data.id &&
+        i.selectedSize === selectedSize &&
+        i.selectedColor === selectedColor
+    );
+
+    if (existingIndex >= 0) {
+      currentItems[existingIndex] = {
+        ...currentItems[existingIndex],
+        quantity: currentItems[existingIndex].quantity + 1,
+      };
+    } else {
+      currentItems.push(item);
+    }
+
+    dispatch(setSelectedItems(currentItems));
+  };
+
+  const handleByNow = () => {
+    if (!selectedItems.length) {
+      return toast.warn("Cart is empty");
+    }
+
+    router.push(`/cart`);
+  };
 
   if (isLoading) return <Loader />;
   if (error) return <div className="text-red-500">Failed to load product</div>;
@@ -128,7 +172,8 @@ const ProductDetails = () => {
                 type="primary"
                 block
                 className="h-12 !bg-secondary"
-                disabled={!selectedSize}
+                disabled={!selectedSize || !selectedColor}
+                onClick={handleSelectedItems}
               >
                 ADD TO CART
               </Button>
@@ -138,7 +183,11 @@ const ProductDetails = () => {
               </Button>
             </div>
 
-            <Button block className="h-12 !bg-primary !text-white">
+            <Button
+              block
+              onClick={handleByNow}
+              className="h-12 !bg-primary !text-white"
+            >
               BUY IT NOW
             </Button>
           </div>

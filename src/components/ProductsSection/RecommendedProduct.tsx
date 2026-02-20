@@ -10,7 +10,7 @@ import { useGetAllProductsQuery } from "@/services/product.service";
 
 export const RecommendedProduct = () => {
   const swiperRef = useRef<any>(null);
-  const { data, error, isLoading } = useGetAllProductsQuery();
+  const { data } = useGetAllProductsQuery();
 
   const [isBeginning, setIsBeginning] = useState(true);
   const [isEnd, setIsEnd] = useState(false);

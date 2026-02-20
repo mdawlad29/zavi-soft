@@ -152,7 +152,7 @@ export default Footer;
 
 const FooterTitle = ({ title }: { title: string }) => {
   return (
-    <Typography.Text className="mb-2 text-[24px] font-semibold capitalize leading-[100%] text-[#FFA52F] md:text-[36px]">
+    <Typography.Text className="mb-4 block text-[24px] font-semibold capitalize leading-[100%] text-[#FFA52F] md:text-[36px]">
       {title}
     </Typography.Text>
   );
